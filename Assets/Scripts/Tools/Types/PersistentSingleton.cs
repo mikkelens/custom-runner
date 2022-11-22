@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Tools.Types
+namespace Scripts.Tools.Types
 {
 	public abstract class PersistentSingleton<T> : Singleton<T> where T : MonoBehaviour
 	{

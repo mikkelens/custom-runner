@@ -1,4 +1,4 @@
-using Tools.Types;
+using Scripts.Tools.Types;
 using UnityEditor;
 using UnityEngine;
 

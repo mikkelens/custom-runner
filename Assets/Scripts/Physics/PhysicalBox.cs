@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Scripts.Tools.Types;
+using Sirenix.OdinInspector;
 using Tools.Helpers;
-using Tools.Types;
 using UnityEngine;
 
-namespace Physics
+namespace Scripts.Physics
 {
 	/// <summary>
 	/// Simple physics subclass for entities or players.
@@ -24,15 +25,19 @@ namespace Physics
 		[SerializeField] private PhysicsSettings physics; // see below
 
 	    [Header("Physics Debug")]
-	    [SerializeField] private protected Optional<Vector2> startVelocity;
-	    [SerializeField] private protected Optional<float> debugFixedDeltaTime = new Optional<float>(0.25f); // delay between physics steps, default is 4 updates per second
-	    [SerializeField] private protected Optional<float> debugTimeScale = new Optional<float>(0.5f); // slow down time, default is half speed
-	    [SerializeField] private protected Vector2 velocity;
+	    [SerializeField] private Optional<Vector2> startVelocity;
+	    [SerializeField] private Optional<float> debugFixedDeltaTime = new Optional<float>(0.25f); // delay between physics steps, default is 4 updates per second
+	    [SerializeField] private Optional<float> debugTimeScale = new Optional<float>(0.5f); // slow down time, default is half speed
+	    [SerializeField, ReadOnly] private Vector2 velocity;
+	    [SerializeField, ReadOnly] private TimedState grounded;
+	    [SerializeField, ReadOnly] private TimedState touchingWallLeft;
+	    [SerializeField, ReadOnly] private TimedState touchingWallRight;
+	    [SerializeField, ReadOnly] private TimedState touchingCeiling;
 
-	    [field:SerializeField] private protected TimedState Grounded { get; private set; }
-	    [field:SerializeField] private protected TimedState TouchingWallLeft { get; private set; }
-	    [field:SerializeField] private protected TimedState TouchingWallRight { get; private set; }
-	    [field:SerializeField] private protected TimedState TouchingCeiling { get; private set; }
+	    private protected TimedState Grounded => grounded;
+	    private protected TimedState TouchingWallLeft => touchingWallLeft;
+	    private protected TimedState TouchingWallRight => touchingWallRight;
+	    private protected TimedState TouchingCeiling => touchingCeiling;
 
 	    private BoxCollider2D _box;
 	    private BoxCollider2D Box => _box != null ? _box : _box = GetComponent<BoxCollider2D>();
@@ -77,18 +82,18 @@ namespace Physics
 		    velocity = step / Time.fixedDeltaTime;
 	    }
 
-	    private protected virtual void UpdateVelocity(ref Vector2 updatedVelocity) {}
+	    private protected virtual void UpdateVelocity(ref Vector2 newVelocity) {}
 
 	    private Vector2 CorrectStep(Vector2 step)
 	    {
 		    // reset collision dependent states
-		    Grounded = false;
-		    TouchingCeiling = false;
-		    TouchingWallLeft = false;
-		    TouchingWallRight = false;
+		    bool ground = false;
+		    bool ceiling = false;
+		    bool wallLeft = false;
+		    bool wallRight = false;
 
 		    // make sure we only deal with the same collider once per physics step
-		    List<Collider2D> collidersToIgnore = new List<Collider2D>{};
+		    List<Collider2D> collidersToIgnore = new List<Collider2D>();
 		    for (int i = 0; i < physics.MaxCollisionPreventionIterations; i++) // each iteration
 		    {
 			    RaycastHit2D[] hitArray = new RaycastHit2D[physics.MaxRegisteredCollidersPerIteration];
@@ -101,12 +106,16 @@ namespace Physics
 					RaycastHit2D hit = hitArray[h];
 					if (collidersToIgnore.Contains(hit.collider) || hit.collider == _box) continue; // hit a previous collider, skip resolve test
 
-					Vector2 hitNormal = hit.normal.normalized;
+					Vector2 hitNormal = hit.normal;
 					// Debug.Log($"Hit collider: {hit.collider}, Hit normal: {hitNormal.ToString()}");
 
-					UpdateStates(hitNormal);
+					// remember touches
+					if (hitNormal.y >= physics.MinGroundNormalHeight) ground = true;
+					if (hitNormal.x > 0) wallLeft = true;
+					if (hitNormal.x < 0) wallRight = true;
+					if (hitNormal.y <= -physics.MinGroundNormalHeight) ceiling = true;
 
-				    Vector2 travelDirection = step.normalized;
+					Vector2 travelDirection = step.normalized;
 					float cancelRelevancy = Vector2.Dot(-hitNormal, travelDirection);
 					if (cancelRelevancy < 0f) continue; // dont apply corrections when not going towards collider
 
@@ -134,20 +143,21 @@ namespace Physics
 					collidersToIgnore.Add(hit.collider);
 			    }
 		    }
+		    // update states
+		    grounded.State = ground;
+		    touchingWallLeft.State = wallLeft;
+		    touchingWallRight.State = wallRight;
+		    touchingCeiling.State = ceiling;
 
 		    return step;
 	    }
 
-	    private void UpdateStates(Vector2 hitNormal)
+	    private Vector2 GetSmallestVectorToObstacle(RaycastHit2D hit)
 	    {
-		    // touching-related state update
-			if (hitNormal.y >= physics.MinGroundNormalHeight) Grounded = true;
-			float wallAlignment = 1 - physics.MinimumMoveDistance;
-			if (hitNormal.x > wallAlignment) TouchingWallLeft = true;
-			if (hitNormal.x < wallAlignment) TouchingWallRight = true;
-			float ceilingAlignment = -physics.MinGroundNormalHeight;
-			if (hitNormal.y <= ceilingAlignment) TouchingWallLeft = true;
-		}
+		    Vector2 distancesFromCenter = hit.point - transform.position.AsV2();
+		    Vector2 offset = Vector2.Min(TrueSize, distancesFromCenter);
+		    return distancesFromCenter - offset;
+	    }
 
 	    private protected float HeightToUpwardsVelocity(float height) => physics.Gravity.Enabled ? Mathf.Sqrt(2 * height * physics.Gravity) : height;
 

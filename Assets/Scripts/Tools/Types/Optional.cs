@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Tools.Types
+namespace Scripts.Tools.Types
 {
 	[Serializable]
     public struct Optional<T>

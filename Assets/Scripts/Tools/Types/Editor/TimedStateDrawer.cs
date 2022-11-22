@@ -1,4 +1,4 @@
-using Tools.Types;
+using Scripts.Tools.Types;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,8 +7,9 @@ namespace Tools.Editor
 	[CustomPropertyDrawer(typeof(TimedState))]
 	public class TimedStateDrawer : PropertyDrawer
 	{
-		private const string TimeSerializedRef = "lastTimeTrue";
 		private const string StateSerializedRef = "state";
+		private const string TrueSerializedRef = "latestTimeTrue";
+		private const string FalseSerializedRef = "startTimeFalse";
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 		{
@@ -27,8 +28,9 @@ namespace Tools.Editor
 			float spacing = EditorGUIUtility.standardVerticalSpacing;
 
 			// find sub-properties
-			SerializedProperty timeProperty = fullProperty.FindPropertyRelative(TimeSerializedRef);
 			SerializedProperty stateProperty = fullProperty.FindPropertyRelative(StateSerializedRef);
+			SerializedProperty trueProperty = fullProperty.FindPropertyRelative(TrueSerializedRef);
+			SerializedProperty falseProperty = fullProperty.FindPropertyRelative(FalseSerializedRef);
 
 			Rect labelAndTime = fullRect;
 			Rect stateRect = fullRect;
@@ -41,8 +43,10 @@ namespace Tools.Editor
 			// BEGIN DRAWING //
 			EditorGUI.BeginProperty(fullRect, label, fullProperty);
 
-			EditorGUI.BeginDisabledGroup(stateProperty.boolValue == false);
-			EditorGUI.PropertyField(labelAndTime, timeProperty, label, false);
+			bool state = stateProperty.boolValue;
+			EditorGUI.BeginDisabledGroup(!state);
+			SerializedProperty relevantTimeProperty = state ? trueProperty : falseProperty;
+			EditorGUI.PropertyField(labelAndTime, relevantTimeProperty, label, false);
 			EditorGUI.EndDisabledGroup();
 
 			EditorGUI.PropertyField(stateRect, stateProperty, GUIContent.none, false);
