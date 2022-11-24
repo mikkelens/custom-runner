@@ -4,3 +4,6 @@
 [submodule "Assets/Scripts/Tools"]
 	path = Assets/Scripts/Tools
 	url = https://github.com/mikkelens/unity-script-tools
+[submodule "Assets/Scripts/Physics"]
+	path = Assets/Scripts/Physics
+	url = https://github.com/mikkelens/unity-custom-physics
