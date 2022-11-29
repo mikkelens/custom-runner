@@ -3,7 +3,10 @@ guid: a75afb910af6e344cbf153d878a383be
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - physics: {fileID: 11400000, guid: 8e676f93b5717c54ba912af66434fb1a, type: 2}
+  - move: {fileID: 11400000, guid: 9a8528c9649149b44af5ec697e8a7b58, type: 2}
+  - forgiveness: {fileID: 11400000, guid: 4396c2bf36b102846acb20f0d03c9419, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
