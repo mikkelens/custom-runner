@@ -568,7 +568,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659102645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.16, y: -3.277, z: 0}
+  m_LocalPosition: {x: -6.39, y: -2.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -589,8 +589,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physics: {fileID: 11400000, guid: 2e0d12f84696db44db7030fba367d01c, type: 2}
   startVelocity:
-    value: {x: 1, y: 0}
-    enabled: 1
+    value: {x: 1000, y: 0}
+    enabled: 0
   debugFixedDeltaTime:
     value: 0.25
     enabled: 0
@@ -1026,7 +1026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4858067230004992416, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: debugFixedDeltaTime.value
-      value: 0.05
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 4858067230004992416, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: debugFixedDeltaTime.enabled
@@ -1050,11 +1050,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7582821230988537020, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.46
       objectReference: {fileID: 0}
     - target: {fileID: 7582821230988537020, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.88
+      value: -1.28
       objectReference: {fileID: 0}
     - target: {fileID: 7582821230988537020, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1094,15 +1094,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7944198607276228815, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: m_Color.b
-      value: 0.7882353
+      value: 0.19290674
       objectReference: {fileID: 0}
     - target: {fileID: 7944198607276228815, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.32116184
       objectReference: {fileID: 0}
     - target: {fileID: 7944198607276228815, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: m_Color.r
-      value: 0.99140084
+      value: 0.4811321
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

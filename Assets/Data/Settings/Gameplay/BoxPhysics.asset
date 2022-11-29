@@ -23,7 +23,7 @@ MonoBehaviour:
     enabled: 0
   <Gravity>k__BackingField:
     value: 10
-    enabled: 0
+    enabled: 1
   <Friction>k__BackingField:
     value: 0.25
     enabled: 0
