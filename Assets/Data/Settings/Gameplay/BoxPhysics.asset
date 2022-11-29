@@ -23,13 +23,11 @@ MonoBehaviour:
     enabled: 0
   <Gravity>k__BackingField:
     value: 10
-    enabled: 1
+    enabled: 0
   <Friction>k__BackingField:
     value: 0.25
     enabled: 0
   <MinimumFriction>k__BackingField:
     value: 0.1
     enabled: 0
-  <PushPriority>k__BackingField:
-    value: 0
-    enabled: 0
+  <PushPriority>k__BackingField: 0
