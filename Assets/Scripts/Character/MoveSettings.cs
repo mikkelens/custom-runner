@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.Character
+namespace Character
 {
 	/// <summary>
 	/// Settings for player movement

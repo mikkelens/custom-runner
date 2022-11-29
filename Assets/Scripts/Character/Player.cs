@@ -1,13 +1,13 @@
-using Scripts.Management.Input;
-using Scripts.Physics;
-using Scripts.Tools.Types;
+using Management.Input;
+using Physics;
 using Sirenix.OdinInspector;
 using Tools.Helpers;
+using Tools.Types;
 using UnityEngine;
 
-namespace Scripts.Character
+namespace Character
 {
-	public class Player : PhysicalBox
+	public class Player : PhysicsBox
 	{
 		[SerializeField, Required] private MoveSettings move;
 		[SerializeField, Required] private ForgivenessSettings forgiveness;
@@ -35,13 +35,13 @@ namespace Scripts.Character
 		private bool WithinCancelForgiveness => forgiveness.JumpBufferFromCancel.Enabled && _jumpInput.StartTimeFalse.TimeSince() <= forgiveness.JumpBufferFromCancel.Value;
 		private bool WantsToJump => (_jumpInput || WithinCancelForgiveness) && PressedWithinTimeframe;
 
-		private bool CanJump => Grounded && _pressedJumpSinceLastJump;
+		private bool CanJump => CollisionStates.grounded && _pressedJumpSinceLastJump;
 
 
-		private protected override void UpdateVelocity(ref Vector2 newVelocity)
+		private protected override Vector2 UpdateVelocity(Vector2 newVelocity)
 		{
 			// walking
-			float moveAccel = MoveAxis.AsSignedInt() != newVelocity.x.AsWeightedInt(0.1f) ? move.StopAccelSpeed : move.AccelSpeed;
+			float moveAccel = MoveAxis.AsIntSign() != newVelocity.x.AsSignedIntOrZero(0.1f) ? move.StopAccelSpeed : move.AccelSpeed;
 			newVelocity.x = Mathf.MoveTowards(newVelocity.x, move.MoveSpeed * MoveAxis, moveAccel * Time.fixedDeltaTime);
 
 			// jumping
@@ -65,10 +65,13 @@ namespace Scripts.Character
 				float maxJumpVelocity = HeightToUpwardsVelocity(move.MaxJumpHeight);
 				newVelocity.y = Mathf.Max(newVelocity.y, maxJumpVelocity);
 			}
+
+			return newVelocity;
 		}
 
-		private void Start()
+		private protected override void Start()
 		{
+			base.Start();
 			if (InputManager.Exists && InputManager.Instance.Player == null) InputManager.Instance.Player = this;
 		}
 		private void OnDisable()

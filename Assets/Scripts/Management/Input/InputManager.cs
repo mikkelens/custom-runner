@@ -1,10 +1,11 @@
-﻿using Scripts.Character;
-using Scripts.Menus;
-using Scripts.Tools.Types;
+﻿using Character;
+using Menus;
+using Scripts.Management.Input;
+using Tools.Types;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Scripts.Management.Input
+namespace Management.Input
 {
 	public class InputManager : PersistentSingleton<InputManager>
 	{

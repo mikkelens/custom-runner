@@ -1,4 +1,4 @@
-﻿namespace Scripts.Menus
+﻿namespace Menus
 {
 	public interface IMenu
 	{

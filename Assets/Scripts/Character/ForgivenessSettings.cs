@@ -1,8 +1,8 @@
-﻿using Scripts.Tools.Types;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
+using Tools.Types;
 using UnityEngine;
 
-namespace Scripts.Character
+namespace Character
 {
 	[CreateAssetMenu(fileName = "New ForgivenessSettings", menuName = "ForgivenessSettings")]
 	public class ForgivenessSettings : ScriptableObject
