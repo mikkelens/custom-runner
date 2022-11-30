@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Character
 {
+	[DefaultExecutionOrder(-1)]
 	public class Player : PhysicsBox
 	{
 		[SerializeField, Required] private MoveSettings move;

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26ac487fc1004347a1ae8e23540e0301, type: 3}
-  m_Name: MovingPhysics
+  m_Name: BoxPhysics
   m_EditorClassIdentifier: 
   <MinGroundNormalHeight>k__BackingField: 0.8
   <MinimumMoveDistance>k__BackingField: 0.001
@@ -19,14 +19,15 @@ MonoBehaviour:
   <CustomCollisionLayers>k__BackingField:
     value:
       serializedVersion: 2
-      m_Bits: 0
-    enabled: 1
-  <Gravity>k__BackingField:
-    value: 45
+      m_Bits: 1
     enabled: 0
+  <Gravity>k__BackingField:
+    value: 10
+    enabled: 1
   <Friction>k__BackingField:
     value: 0.25
     enabled: 0
   <MinimumFriction>k__BackingField:
     value: 0.1
     enabled: 0
+  <PushPriority>k__BackingField: 0

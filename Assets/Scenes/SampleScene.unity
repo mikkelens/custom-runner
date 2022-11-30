@@ -472,11 +472,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 659102648}
-  - component: {fileID: 659102647}
   - component: {fileID: 659102649}
   - component: {fileID: 659102646}
+  - component: {fileID: 659102647}
   m_Layer: 0
-  m_Name: Ground_4
+  m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -550,7 +550,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
+  m_Color: {r: 0.509434, g: 0.46022132, b: 0.34362763, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -568,8 +568,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659102645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -3.55, z: 0}
-  m_LocalScale: {x: 0.9415187, y: 1.0949659, z: 0.61993}
+  m_LocalPosition: {x: -6.39, y: -2.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -584,12 +584,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 659102645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a82255cf5b974557beadbc951f920d9a, type: 3}
+  m_Script: {fileID: 11500000, guid: ab9fa43f269b45740a10ad11188c84dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   physics: {fileID: 11400000, guid: 2e0d12f84696db44db7030fba367d01c, type: 2}
   startVelocity:
-    value: {x: 0, y: 0}
+    value: {x: 1000, y: 0}
     enabled: 0
   debugFixedDeltaTime:
     value: 0.25
@@ -598,31 +598,31 @@ MonoBehaviour:
     value: 0.5
     enabled: 0
   velocity: {x: 0, y: 0}
-  grounded:
-    state: 0
-    latestTimeTrue: 0
-    latestTimeFalse: 0
-    startTimeTrue: 0
-    startTimeFalse: 0
-  touchingWallLeft:
-    state: 0
-    latestTimeTrue: 0
-    latestTimeFalse: 0
-    startTimeTrue: 0
-    startTimeFalse: 0
-  touchingWallRight:
-    state: 0
-    latestTimeTrue: 0
-    latestTimeFalse: 0
-    startTimeTrue: 0
-    startTimeFalse: 0
-  touchingCeiling:
-    state: 0
-    latestTimeTrue: 0
-    latestTimeFalse: 0
-    startTimeTrue: 0
-    startTimeFalse: 0
-  moveVelocities: {x: 0, y: 1}
+  <CollisionStates>k__BackingField:
+    grounded:
+      state: 0
+      latestTimeTrue: 0
+      latestTimeFalse: 0
+      startTimeTrue: 0
+      startTimeFalse: 0
+    wallLeft:
+      state: 0
+      latestTimeTrue: 0
+      latestTimeFalse: 0
+      startTimeTrue: 0
+      startTimeFalse: 0
+    wallRight:
+      state: 0
+      latestTimeTrue: 0
+      latestTimeFalse: 0
+      startTimeTrue: 0
+      startTimeFalse: 0
+    ceilingAbove:
+      state: 0
+      latestTimeTrue: 0
+      latestTimeFalse: 0
+      startTimeTrue: 0
+      startTimeFalse: 0
 --- !u!1 &786800870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1012,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4858067230004992416, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
+      propertyPath: debugTimeScale.value
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858067230004992416, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
+      propertyPath: startVelocity.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858067230004992416, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
+      propertyPath: debugTimeScale.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858067230004992416, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
+      propertyPath: debugFixedDeltaTime.value
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858067230004992416, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
+      propertyPath: debugFixedDeltaTime.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7582821230988537020, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1030,11 +1050,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7582821230988537020, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.46
       objectReference: {fileID: 0}
     - target: {fileID: 7582821230988537020, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.28
       objectReference: {fileID: 0}
     - target: {fileID: 7582821230988537020, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1071,6 +1091,18 @@ PrefabInstance:
     - target: {fileID: 7582821230988537020, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944198607276228815, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.19290674
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944198607276228815, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
+      propertyPath: m_Color.g
+      value: 0.32116184
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944198607276228815, guid: 457af296333a36d4bb20b70a185fb6f5, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4811321
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

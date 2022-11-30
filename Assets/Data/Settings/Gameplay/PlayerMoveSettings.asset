@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerMoveSettings
   m_EditorClassIdentifier: 
   <MoveSpeed>k__BackingField: 3
-  <AccelSpeed>k__BackingField: 25
-  <StopAccelSpeed>k__BackingField: 60
+  <AccelSpeed>k__BackingField: 6
+  <StopAccelSpeed>k__BackingField: 40
   <MinJumpHeight>k__BackingField: 0.75
   <MaxJumpHeight>k__BackingField: 3
   <DownwardsDrag>k__BackingField: 10

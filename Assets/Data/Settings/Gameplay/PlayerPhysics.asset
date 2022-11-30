@@ -20,7 +20,7 @@ MonoBehaviour:
     value:
       serializedVersion: 2
       m_Bits: 1
-    enabled: 1
+    enabled: 0
   <Gravity>k__BackingField:
     value: 45
     enabled: 1
@@ -30,3 +30,4 @@ MonoBehaviour:
   <MinimumFriction>k__BackingField:
     value: 0.1
     enabled: 0
+  <PushPriority>k__BackingField: 1
