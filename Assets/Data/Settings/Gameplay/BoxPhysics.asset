@@ -25,9 +25,9 @@ MonoBehaviour:
     value: 10
     enabled: 1
   <Friction>k__BackingField:
-    value: 0.25
+    value: 2
     enabled: 0
   <MinimumFriction>k__BackingField:
-    value: 0.1
+    value: 0.06
     enabled: 0
   <PushPriority>k__BackingField: 0
