@@ -22,12 +22,15 @@ MonoBehaviour:
       m_Bits: 1
     enabled: 0
   <Gravity>k__BackingField:
-    value: 45
+    value: 40
     enabled: 1
-  <Friction>k__BackingField:
+  <MaxFallSpeed>k__BackingField:
+    value: 9
+    enabled: 0
+  <CollisionFriction>k__BackingField:
     value: 0.25
     enabled: 0
-  <MinimumFriction>k__BackingField:
+  <MinimumCollisionFriction>k__BackingField:
     value: 0.1
     enabled: 0
   <PushPriority>k__BackingField: 1

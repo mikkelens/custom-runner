@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Tools.Types;
+using UnityEngine;
 
 namespace Character
 {
@@ -13,6 +14,7 @@ namespace Character
 		[field: SerializeField] public float StopAccelSpeed { get; private set; } = 200f;
 		[field: SerializeField] public float MinJumpHeight { get; private set; } = 2f;
 		[field: SerializeField] public float MaxJumpHeight { get; private set; } = 4f;
-		[field: SerializeField] public float DownwardsDrag { get; private set; } = 10f; // used with fall speed
+		[field: SerializeField] public Optional<float> PeakGravityModifier { get; private set; } = 2f; // used with min jump heigt
+		[field: SerializeField] public Optional<float> FallGravityModifier { get; private set; } = 2f;
 	}
 }

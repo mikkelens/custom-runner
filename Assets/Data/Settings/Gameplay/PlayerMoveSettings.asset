@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f641e92097fe4f36869f2a12bf569e37, type: 3}
   m_Name: PlayerMoveSettings
   m_EditorClassIdentifier: 
-  <MoveSpeed>k__BackingField: 3
-  <AccelSpeed>k__BackingField: 6
+  <MoveSpeed>k__BackingField: 3.5
+  <AccelSpeed>k__BackingField: 18
   <StopAccelSpeed>k__BackingField: 40
   <MinJumpHeight>k__BackingField: 0.75
   <MaxJumpHeight>k__BackingField: 3
-  <DownwardsDrag>k__BackingField: 10
+  <PeakGravityModifier>k__BackingField:
+    value: 0.95
+    enabled: 1
+  <FallGravityModifier>k__BackingField:
+    value: 2
+    enabled: 1
