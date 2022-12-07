@@ -47,29 +47,32 @@ namespace Character
 		private protected override Vector2 UpdateVelocity(Vector2 newVelocity)
 		{
 			// walking
-			float moveAccel = MoveAxis.AsIntSign() != newVelocity.x.AsSignedIntOrZero(0.1f) ? move.StopAccelSpeed : move.AccelSpeed;
+			float moveAccel = MoveAxis.AsSignedIntOrZero() * newVelocity.x.AsSignedIntOrZero() <= 0 // opposite or zero
+				? CollisionStates.grounded ? move.GroundStopAccelSpeed : move.AirStopAccelSpeed // stopping
+				: CollisionStates.grounded ? move.GroundAccelSpeed : move.AirAccelSpeed; // gaining speed
 			newVelocity.x = Mathf.MoveTowards(newVelocity.x, move.MoveSpeed * MoveAxis, moveAccel * Time.fixedDeltaTime);
 
 			// jumping
 			if (_jumping)
 			{
-				if (newVelocity.y <= HeightToUpwardsVelocity(move.MinJumpHeight)) // peak of jump, arc manipulation
+				if (!_jumpInput) // early/cancel end
 				{
-					// natural jump eak arc:
-					// lower gravity at peak
-					_peakingJump = true; // this changes result of height-to-velocity function
-					// remap velocity to new gravity
+					_jumping = false;
 					newVelocity.y = Mathf.Min(newVelocity.y, HeightToUpwardsVelocity(move.MinJumpHeight));
 				}
-				if (!_jumpInput)
+				else if (newVelocity.y <= HeightToUpwardsVelocity(move.MinJumpHeight))
 				{
-					_jumping = false; // cancel jump
-					_peakingJump = true; // cancel-based jump peak arc
+					// natural end gives "peak" jump arc
+					_jumping = false;
+					_peakingJump = true; // lower gravity
 					newVelocity.y = Mathf.Min(newVelocity.y, HeightToUpwardsVelocity(move.MinJumpHeight));
 				}
-				else if (newVelocity.y < 0f)
+			}
+			else if (_peakingJump)
+			{
+				if (newVelocity.y <= 0f)
 				{
-					_jumping = false; // jump has naturally ended
+					_peakingJump = false;
 				}
 			}
 			else if (CanJump && WantsToJump)
@@ -78,11 +81,6 @@ namespace Character
 				_pressedJumpSinceLastJump = false;
 				newVelocity.y = Mathf.Max(newVelocity.y, HeightToUpwardsVelocity(move.MaxJumpHeight));
 			}
-			if (_peakingJump && newVelocity.y <= 0f)
-			{
-				_peakingJump = false; // peak has (naturally) ended
-			}
-
 			return newVelocity;
 		}
 
@@ -96,6 +94,11 @@ namespace Character
 		private void OnDisable()
 		{
 			if (InputManager.Exists && InputManager.Instance.Player == this) InputManager.Instance.Player = null;
+		}
+
+		public void Hit()
+		{
+			Destroy(gameObject); // change to be nicer ig
 		}
 	}
 }

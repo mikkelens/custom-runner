@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f641e92097fe4f36869f2a12bf569e37, type: 3}
   m_Name: PlayerMoveSettings
   m_EditorClassIdentifier: 
-  <MoveSpeed>k__BackingField: 3.5
-  <AccelSpeed>k__BackingField: 18
-  <StopAccelSpeed>k__BackingField: 40
-  <MinJumpHeight>k__BackingField: 0.75
+  <MoveSpeed>k__BackingField: 4.5
+  <GroundAccelSpeed>k__BackingField: 45
+  <GroundStopAccelSpeed>k__BackingField: 90
+  <AirAccelSpeed>k__BackingField: 25
+  <AirStopAccelSpeed>k__BackingField: 60
+  <MinJumpHeight>k__BackingField: 0.5
   <MaxJumpHeight>k__BackingField: 3
   <PeakGravityModifier>k__BackingField:
-    value: 0.95
+    value: 0.85
     enabled: 1
   <FallGravityModifier>k__BackingField:
-    value: 2
+    value: 1.75
     enabled: 1

@@ -25,7 +25,7 @@ MonoBehaviour:
     value: 40
     enabled: 1
   <MaxFallSpeed>k__BackingField:
-    value: 9
+    value: 12
     enabled: 0
   <CollisionFriction>k__BackingField:
     value: 0.25
