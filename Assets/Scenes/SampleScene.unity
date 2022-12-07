@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 1606203568}
   - component: {fileID: 1606203567}
   - component: {fileID: 1606203566}
-  - component: {fileID: 1606203565}
+  - component: {fileID: 1606203569}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -571,55 +571,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1606203565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606203564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab9fa43f269b45740a10ad11188c84dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  physics: {fileID: 11400000, guid: 2e0d12f84696db44db7030fba367d01c, type: 2}
-  startVelocity:
-    value: {x: 0, y: 0}
-    enabled: 0
-  debugFixedDeltaTime:
-    value: 0.25
-    enabled: 0
-  debugTimeScale:
-    value: 0.5
-    enabled: 0
-  physicsVelocity: {x: 0, y: 0}
-  <CollisionStates>k__BackingField:
-    grounded:
-      state: 0
-      latestTimeTrue: 0
-      latestTimeFalse: 0
-      startTimeTrue: 0
-      startTimeFalse: 0
-    wallLeft:
-      state: 0
-      latestTimeTrue: 0
-      latestTimeFalse: 0
-      startTimeTrue: 0
-      startTimeFalse: 0
-    wallRight:
-      state: 0
-      latestTimeTrue: 0
-      latestTimeFalse: 0
-      startTimeTrue: 0
-      startTimeFalse: 0
-    ceilingAbove:
-      state: 0
-      latestTimeTrue: 0
-      latestTimeFalse: 0
-      startTimeTrue: 0
-      startTimeFalse: 0
-  _box: {fileID: 1606203566}
 --- !u!61 &1606203566
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -713,6 +664,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1606203569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606203564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f9843b64998403987bfaa6e202f7976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physics: {fileID: 0}
+  startVelocity:
+    value: {x: 0, y: 0}
+    enabled: 0
+  debugFixedDeltaTime:
+    value: 0.25
+    enabled: 0
+  debugTimeScale:
+    value: 0.5
+    enabled: 0
+  physicsVelocity: {x: 0, y: 0}
+  <CollisionStates>k__BackingField:
+    grounded:
+      state: 0
+      latestTimeTrue: 0
+      latestTimeFalse: 0
+      startTimeTrue: 0
+      startTimeFalse: 0
+    wallLeft:
+      state: 0
+      latestTimeTrue: 0
+      latestTimeFalse: 0
+      startTimeTrue: 0
+      startTimeFalse: 0
+    wallRight:
+      state: 0
+      latestTimeTrue: 0
+      latestTimeFalse: 0
+      startTimeTrue: 0
+      startTimeFalse: 0
+    ceilingAbove:
+      state: 0
+      latestTimeTrue: 0
+      latestTimeFalse: 0
+      startTimeTrue: 0
+      startTimeFalse: 0
+  move: {fileID: 0}
 --- !u!1001 &7733236187448006534
 PrefabInstance:
   m_ObjectHideFlags: 0
