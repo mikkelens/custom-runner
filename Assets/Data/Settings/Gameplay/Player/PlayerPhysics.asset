@@ -19,14 +19,14 @@ MonoBehaviour:
   <CustomCollisionLayers>k__BackingField:
     value:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 0
     enabled: 0
   <Gravity>k__BackingField:
     value: 40
     enabled: 1
   <MaxFallSpeed>k__BackingField:
     value: 12
-    enabled: 0
+    enabled: 1
   <CollisionFriction>k__BackingField:
     value: 0.25
     enabled: 0

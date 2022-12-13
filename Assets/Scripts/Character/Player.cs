@@ -45,9 +45,10 @@ namespace Character
 				? move.FallGravityModifier.Value * base.CurrentGravity
 				: base.CurrentGravity;
 
-		private void FixedUpdate()
+		private protected override void FixedUpdate()
 		{
 			UpdateVelocity();
+			base.FixedUpdate();
 		}
 
 		private void UpdateVelocity()
@@ -102,7 +103,7 @@ namespace Character
 			if (InputManager.Exists && InputManager.Instance.Player == this) InputManager.Instance.Player = null;
 		}
 
-		public void Hit()
+		public void TryHit()
 		{
 			Destroy(gameObject); // change to be nicer ig
 		}
