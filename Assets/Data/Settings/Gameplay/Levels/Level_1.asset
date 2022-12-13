@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13200a3a53974c41a12f4fc4dbd5e89d, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: 
+  levelTime: 7.5
   widthSpacing:
-    min: 1
-    max: 10
-  minHeightClearance:
-    value: 0.5
-    enabled: 0
-  <ObstaclePrefabs>k__BackingField:
-  - {fileID: 5078438926424141833, guid: 53a8a3ddabef66a4e89e326b990846eb, type: 3}
+    min: 5
+    max: 3
+  heightSpacing:
+    min: 6
+    max: 2
+  <Obstacles>k__BackingField:
+  - value: {fileID: 5078438926424141833, guid: 53a8a3ddabef66a4e89e326b990846eb, type: 3}
+    relativity: 1

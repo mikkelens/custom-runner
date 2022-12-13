@@ -536,7 +536,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0518ef58c4790a24d809b66623daaacf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: c60aa6f1357e69d4a97946d2d2b76dcd, type: 2}
+  hazardSpawnPoint: {fileID: 1365265188}
+  levels:
+  - {fileID: 11400000, guid: c60aa6f1357e69d4a97946d2d2b76dcd, type: 2}
 --- !u!4 &1365265188
 Transform:
   m_ObjectHideFlags: 0
@@ -545,7 +547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365265186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.52, y: -1.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
