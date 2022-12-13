@@ -41,12 +41,18 @@ namespace Character
 
 		private protected override float CurrentGravity => move.PeakGravityModifier.Enabled && _peakingJump
 			? move.PeakGravityModifier.Value * base.CurrentGravity
-			: move.FallGravityModifier.Enabled && !CollisionStates.grounded.State && physicsVelocity.y < 0f
+			: move.FallGravityModifier.Enabled && !CollisionStates.grounded.State && Velocity.y < 0f
 				? move.FallGravityModifier.Value * base.CurrentGravity
 				: base.CurrentGravity;
 
-		private protected override Vector2 UpdateVelocity(Vector2 newVelocity)
+		private void FixedUpdate()
 		{
+			UpdateVelocity();
+		}
+
+		private void UpdateVelocity()
+		{
+			Vector2 newVelocity = Velocity;
 			// walking
 			float moveAccel = MoveAxis.AsSignedIntOrZero() * newVelocity.x.AsSignedIntOrZero() <= 0 // opposite or zero
 				? CollisionStates.grounded ? move.GroundStopAccelSpeed : move.AirStopAccelSpeed // stopping
@@ -82,12 +88,11 @@ namespace Character
 				_pressedJumpSinceLastJump = false;
 				newVelocity.y = Mathf.Max(newVelocity.y, HeightToUpwardsVelocity(move.MaxJumpHeight));
 			}
-			return newVelocity;
+			Velocity = newVelocity;
 		}
 
-		private protected override void Start()
+		private void Start()
 		{
-			base.Start();
 			if (InputManager.Exists && InputManager.Instance.Player == null) InputManager.Instance.Player = this;
 		}
 
